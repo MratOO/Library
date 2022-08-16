@@ -43,21 +43,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="container">
   	<div class="header_top-box">
      <div class="header-top-left">
-			  <div class="box">
-			  	   	<select tabindex="4" class="dropdown drop">
-					   <option value="" class="label" value="">Dollar :</option>
-				       <option value="1">Dollar</option>
-				       <option value="2">Euro</option>
-					</select>
-   			   </div>
-   			   <div class="box1">
-   				       <select tabindex="4" class="dropdown">
-							<option value="" class="label" value="">English :</option>
-							<option value="1">English</option>
-							<option value="2">French</option>
-							<option value="3">German</option>
-					  </select>
-   			   </div>
    				    <div class="clearfix"></div>
    			 </div>
 			 <div class="cssmenu">
@@ -104,9 +89,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="menu_box">
 	     <ul class="megamenu skyblue">
-			<li class="active grid"><a class="color2" href="index.html">Home</a></li>
-			<li><a class="color4" href="men.html">Special</a></li>				
-			<li><a class="color10" href="#">Men Fashion</a>
+			<li class="active grid"><a class="color2" href="index.html">Главная</a></li>
+			<li><a class="color4" href="men.html">Акции</a></li>				
+			<li><a class="color10" href="#">Жанры</a>
 				<div class="megapanel">
 					<div class="row">
 						<div class="col1">
@@ -184,7 +169,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					  </div>
 					</div>
 			</li>
-			<li><a class="color3" href="404.html">Accessories</a></li>
+			<li><a class="color3" href="404.html">Подарки</a></li>
 			<li><a class="color7" href="#">Women's Fashion</a>
 				<div class="megapanel">
 					<div class="row">
@@ -269,11 +254,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  </div>
 </div>
 </div>
+{% block content %}
 <div class="index_slider">
 	<div class="container">
 	  <div class="callbacks_container">
 	      <ul class="rslides" id="slider">
-	        <li><img src="images/slider1.jpg" class="img-responsive" alt=""/></li>
+	        <li><img src="" class="img-responsive" alt=""/></li>
 	        <li><img src="images/2.jpg" class="img-responsive" alt=""/></li>
 	        <li><img src="images/3.jpg" class="img-responsive" alt=""/></li>
 	      </ul>
@@ -332,14 +318,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</ul>
 		</div>
+		
 		<div class="grid_2">
+			{% for bk in home %}
 			<div class="col-md-3 span_6">
 			  <div class="box_inner">
-				<img src="images/p1.jpg" class="img-responsive" alt=""/>
+				<img src=''  class="img-responsive" alt=""/>
 				 <div class="sale-box"> </div>
 				 <div class="desc">
-				 	<h3>Ullamcorper suscipit</h3>
-				 	<h4>178,90 $</h4>
+				 	<h3>{{ bk.name }}</h3>
+				 	<h4>{{ bk.price }}</h4>
 				 	<ul class="list2">
 				 	  <li class="list2_left"><span class="m_1"><a href="#" class="link">Add to Cart</a></span></li>
 				 	  <li class="list2_right"><span class="m_2"><a href="#" class="link1">See More</a></span></li>
@@ -349,6 +337,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				 </div>
 			   </div>
 			</div>
+			{% endfor %}
 			<div class="col-md-3 span_6">
 			  <div class="box_inner">
 				<img src="images/p2.jpg" class="img-responsive" alt=""/>
@@ -603,6 +592,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     	<div class="clearfix"> </div>
     </div>
 </div>
+{% endblock content %}
 <div class="footer">
 	<div class="container">
 		<img src="images/pay.png" class="img-responsive" alt=""/>
