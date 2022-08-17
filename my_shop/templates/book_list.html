@@ -9,74 +9,47 @@
 		        <strong><span>Shop By</span></strong>
 		    </div>
     <div class="block-content">
-                                    
-            <dl id="narrow-by-list">
-                                                                                                    <dt class="odd">processus</dt>
-                    <dd class="odd">
-<ol>
-    <li>
-                <a href="#"><span class="price1">US$&nbsp;0,00</span> - <span class="price1">US$&nbsp;99,99</span></a>
-                        (4)
-            </li>
-    <li>
-                <a href="#"><span class="price1">US$&nbsp;100,00</span> - <span class="price1">US$&nbsp;199,99</span></a>
-                        (4)
-            </li>
-    <li>
-                <a href="#"><span class="price1">US$&nbsp;200,00</span> - <span class="price1">US$&nbsp;299,99</span></a>
-                        (1)
-            </li>
-    <li>
-                <a href="#"><span class="price1">US$&nbsp;400,00</span> - <span class="price1">US$&nbsp;499,99</span></a>
-                        (1)
-            </li>
-    <li>
-                <a href="#"><span class="price1">US$&nbsp;800,00</span> and above</a>
-                        (1)
-            </li>
-</ol>
-</dd>
-                                                                    <dt class="even">Manufacturer</dt>
+                                                                    <dt class="even">Жанры</dt>
                     <dd class="even">
 <ol>
     <li>
-                <a href="#">Calvin Klein</a>
+                <a href="#">Классика</a>
                         (2)
             </li>
     <li>
-                <a href="#">Diesel</a>
+                <a href="#">Манга</a>
                         (1)
             </li>
     <li>
-                <a href="#">Polo</a>
+                <a href="#">Триллер</a>
                         (1)
             </li>
     <li>
-                <a href="#">Tommy Hilfiger</a>
+                <a href="#">Ужасы</a>
                         (1)
             </li>
     <li>
-                <a href="#">Versace</a>
+                <a href="#">Фантастика</a>
                         (1)
             </li>
+	<li>
+		<a href="">Фэнтези</a>
+	</li>				
 </ol>
 </dd>
-                                                                    <dt class="last odd">Color</dt>
+                                                                    <dt class="last odd">Авторы</dt>
                     <dd class="last odd">
 <ol>
     <li>
-        Black                        (0)
-            </li>
-    <li>
-                <a href="#">Blue</a>
+                <a href="#">Стивен Кинг</a>
                         (2)
             </li>
     <li>
-                <a href="#">Green</a>
+                <a href="#">Рэй Брэдбери</a>
                         (1)
             </li>
     <li>
-                <a href="#">Grey</a>
+                <a href="#">Джордж Оруэлл</a>
                         (1)
             </li>
     <li>
@@ -147,14 +120,16 @@
      	    <div class="clearfix"></div>
 	     </div>
 	          <div class="span_2">
+				{% for bk in book_list %}
 	          	 <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="single.html">
-				     <img src="images/pic2.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
+	          	    <a href="{{ bk.get_absolute_url }}">
+				     <img src="{{ bk.poster.url }}" class="img-responsive" alt=""/>
+				     <h3>{{ bk.name }}</h3>
+				   	 <p>{{ bk.author }}</p>
+				   	 <h4>{{ bk.price }}</h4>
 			         </a>  
 				  </div> 
+				{% endfor %}  
 				  <div class="col_1_of_single1 span_1_of_single1">
 	          	    <a href="single.html">
 				     <img src="images/pic1.jpg" class="img-responsive" alt=""/>

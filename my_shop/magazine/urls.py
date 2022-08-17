@@ -5,6 +5,8 @@ from django.conf import settings
 from . import views
 
 urlpatterns = [
-    path('', views.ListView.as_view(), name='home'),
-    path('<slug:slug>/', views.ListView.as_view(), name='book_list')
+    path('', views.HomeView.as_view(), name='home'),
+    path('<slug:slug>/<slug:book_slug>/', views.BookDetailView.as_view(),
+    name='book_detail'),
+    path('<slug:slug>/', views.ListView.as_view(), name='book_list'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

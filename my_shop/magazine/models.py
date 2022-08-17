@@ -1,10 +1,11 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Genres(models.Model):
 
     name = models.CharField(max_length=75)
-    slug = models.SlugField(max_length=75)
+    slug = models.SlugField(max_length=75, default='')
 
 
     def __str__(self):
@@ -13,6 +14,9 @@ class Genres(models.Model):
 class Book(models.Model):
 
     poster = models.ImageField(upload_to='media', blank=True)
+    book_view = models.ImageField(upload_to='media', blank=True)
+    book_view1 = models.ImageField(upload_to='media', blank=True)
+    book_view2 = models.ImageField(upload_to='media', blank=True)
     name = models.CharField(max_length=100)
     author = models.CharField(max_length=50)
     genre = models.ForeignKey(
@@ -23,6 +27,11 @@ class Book(models.Model):
     )
     price = models.CharField(max_length=8)
     description = models.TextField()
+    slug = models.SlugField(max_length=75, default='')
+
+    def get_absolute_url(self):
+        return reverse('book_detail', kwargs={'slug':self.genre.slug,
+        'book_slug':self.slug})
 
     
     def __str__(self):
