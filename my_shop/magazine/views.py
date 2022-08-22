@@ -1,5 +1,8 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout, login
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 
 
@@ -35,5 +38,26 @@ class HomeView(ListView):
 class RegisterUser(CreateView):
     
     form_class = RegisterUserForm
-    template_name = 'register.html'
+    template_name = 'users/register.html'
     success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('home') 
+
+class LoginUser(LoginView):
+
+    form_class = AuthenticationForm
+    template_name = 'users/login.html'
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')
+
+
+class CartView(ListView):
+    
+    model = Book
+    context_object_name = 'cart'
+    template_name = 'wishlist.html'        

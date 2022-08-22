@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post" style="margin-left: 825px; height: 398px; margin-top: 125px;">
+	{% csrf_token %}
+
+{% for f in form %}
+<p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}:  </label>{{ f }}</p> 
+<div class="form-error">{{ f.errors }}</div>
+{% endfor %}
+<button type="submit">Войти</button> 
+</form>
+
+{% endblock content %} 
