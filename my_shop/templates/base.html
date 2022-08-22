@@ -47,10 +47,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    			 </div>
 			 <div class="cssmenu">
 				<ul>
-					<li class="active"><a href="login.html">Account</a></li> 
+					<li class="active"><a href="">Account</a></li> 
 					<li><a href="wishlist.html">Wishlist</a></li> 
 					<li><a href="login.html">Log In</a></li> 
-					<li><a href="register.html">Sign Up</a></li>
+					<li><a href="{% url 'registration' %}">Sign Up</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"></div>
@@ -62,12 +62,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <div class="header_bottom-box">
 		<div class="header_bottom_left">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" alt=""/></a>
+				<a href="index.html"><img src="media/img/Green Light.png" alt=""/></a>
 			</div>
-			<ul class="clock">
-				<i class="clock_icon"> </i>
-				<li class="clock_desc">Justo 24/h</li>
-			</ul>
 			<div class="clearfix"> </div>
 		</div>
 		<div class="header_bottom_right">
@@ -89,18 +85,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="menu_box">
 	     <ul class="megamenu skyblue">
-			<li class="active grid"><a class="color2" href="home.html">Главная</a></li>
-			<li><a class="color4" href="book_list.html">Все Книги</a></li>				
+			<li class="active grid"><a class="color2" href="{% url 'home' %}">Главная</a></li>
+			<li><a class="color4" href="/books_list/">Все Книги</a></li>				
 			<li><a class="color10" href="#">Жанры</a>
 				<div class="megapanel">
 					<div class="row">
 						<div class="col1">
 							<div class="h_nav">
 								<ul>
-									<li><a href="men.html">Классика</a></li>
+									<li><a href="">Классика</a></li>
 									<li><a href="men.html">Манга</a></li>
 									<li><a href="men.html">Триллер</a></li>
-									<li><a href="men.html">Ужасы</a></li>
+									<li><a href="/horrors/">Ужасы</a></li>
 									<li><a href="men.html">Фантастика</a></li>
 									<li><a href="men.html">Фэнтези</a></li>
 									<li><a href="men.html"></a></li>

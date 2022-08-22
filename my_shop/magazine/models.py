@@ -2,11 +2,21 @@ from django.db import models
 from django.urls import reverse
 
 
+
+
 class Genres(models.Model):
 
     name = models.CharField(max_length=75)
     slug = models.SlugField(max_length=75, default='')
 
+
+
+    def __str__(self):
+        return self.name
+
+class Author(models.Model):
+
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
@@ -18,7 +28,12 @@ class Book(models.Model):
     book_view1 = models.ImageField(upload_to='media', blank=True)
     book_view2 = models.ImageField(upload_to='media', blank=True)
     name = models.CharField(max_length=100)
-    author = models.CharField(max_length=50)
+    author = models.ForeignKey(
+        Author, 
+        related_name='book', 
+        on_delete=models.SET_NULL,
+        null=True
+    )
     genre = models.ForeignKey(
         Genres, 
         related_name='book', 
@@ -36,6 +51,8 @@ class Book(models.Model):
     
     def __str__(self):
         return self.name
+       
+        
 
 class Commet(models.Model):
 
@@ -47,5 +64,4 @@ class Commet(models.Model):
     def __str__(self):
         return self.name
     
-
-               
+  
