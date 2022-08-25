@@ -103,72 +103,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <div class="clearfix"> </div>
 
 	  <div class="comments-area">
-		<h3>Add New Comment</h3>
-	  <form>
+		<h3>Добавить отзыв</h3>
+	  <form action="{% url 'add_review' book.id %}" method="post"> 
+		{% csrf_token %}
 			  <p>
-				  <label>Name</label>
+				  <label>Имя</label>
 				  <span>*</span>
-				  <input type="text" value="">
+				  <input type="text" value="" name="name">
 			  </p>
 			  <p>
 				  <label>Email</label>
 				  <span>*</span>
-				  <input type="text" value="">
+				  <input type="text" value="" name="email">
 			  </p>
 			  <p>
-				  <label>Website</label>
-				  <input type="text" value="">
-			  </p>
-			  <p>
-				  <label>Subject</label>
+				  <label>Отзыв</label>
 				  <span>*</span>
-				  <textarea></textarea>
+				  <textarea name="message"></textarea>
 			  </p>
 			  <p>
-				  <input type="submit" value="Submit Comment">
+				  <input type="submit" value="Отправить">
 			  </p>
-	 </form>
+	 	</form>
+		</div>	
+		{% for r in review %}
+		<div class="media mt-5 editContent">
+			<div class="media-body">
+				<h5 class="mt-0 editContent">
+					{{ r.name }}
+				</h5>
+				<p class="mt-2 editContent">
+					1
+				</p>
+			</div>
+		</div>	
+		{% endfor %}	
+	</div>
+	</div>
+	</div>	
 </div>  
-     <h4 class="head_single">Похожие товары</h4>
-     <div class="span_3">
-	          	 <div class="col-sm-3 grid_1">
-	          	    <a href="single.html">
-				     <img src="images/pic9.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				<div class="col-sm-3 grid_1">
-	          	    <a href="single.html">
-				     <img src="images/pic8.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				 <div class="col-sm-3 grid_1">
-	          	    <a href="single.html">
-				     <img src="images/pic1.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				  <div class="col-sm-3 grid_1">
-	          	    <a href="single.html">
-				     <img src="images/pic3.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				  <div class="clearfix"></div>
-	     </div>
-      </div>
 	</div>
 <link href="{% static 'css/flexslider.css' %}" rel='stylesheet' type='text/css' />
-							  <script defer src="{% static 'js/jquery.flexslider.js' %"></script>
+							  <script defer src="{% static 'js/jquery.flexslider.js' %}"></script>
 							  <script type="text/javascript">
 								$(function(){
 								  SyntaxHighlighter.all();

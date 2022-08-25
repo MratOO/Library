@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 	<div class="men">
 	<div class="container">
@@ -121,13 +120,13 @@
      	    <div class="clearfix"></div>
 	     </div>
 	          <div class="span_2">
-				{% for bk in books_list %}
+				{% for book in books %}
 	          	 <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="">
-				     <img src="" class="img-responsive" alt=""/>
-				     <h3>{{ bk.name }}</h3>
-				   	 <p>{{ bk.author }}</p>
-				   	 <h4>{{ bk.price }}</h4>
+	          	    <a href="{{ book.get_absolute_url }}">
+				     <img src="{{ book.poster.url }}" class="img-responsive" alt=""/>
+				     <h3>{{ book.name }}</h3>
+				   	 <p>{{ book.author }}</p>
+				   	 <h4>{{ book.price }}</h4>
 			         </a>  
 				  </div> 
 				{% endfor %}  

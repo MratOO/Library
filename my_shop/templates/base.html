@@ -71,15 +71,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="clearfix"> </div>
 		</div>
 		<div class="header_bottom_right">
-			<div class="search">
-			  <input type="text" value="Что ищете?" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your email address';}">
-			  <input type="submit" value="Поиск" style="width: 125px;">
-	  		</div>
-	  		<ul class="bag">
-	  			<a href="{% url 'cart' %}"><li class="bag_right" style="width: 75px; margin-left: 50px;"><p>Корзина</p></li></a>
-	  			<div class="clearfix"> </div>
-	  		</ul>
-		</div>
+			<div class="search-bar w3layouts-newsletter">
+				<h3 class="search-head editContent">Поиск книги</h3>
+				<form action="{% url 'search' %}" method="get" class="d-flex editContent">
+			  		<input type="search" placeholder="Что ищете?" name="q" class='form-control' required=''>
+			  		<button  type="submit" class="btn1 btn">
+						<span class="fa fa-search" aria-hidden="true"></span>
+			  		</button>
+	  			</form>
+		</div>		
 		<div class="clearfix"> </div>
 	</div>
 </div>
@@ -89,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="menu_box">
 	     <ul class="megamenu skyblue">
 			<li class="active grid"><a class="color2" href="{% url 'home' %}">Главная</a></li>
-			<li><a class="color4" href="/books_list/">Все Книги</a></li>				
+			<li><a class="color4" href="{% url 'all' %}">Все Книги</a></li>				
 			<li><a class="color10" href="#">Жанры</a>
 				<div class="megapanel">
 					<div class="row">
@@ -100,7 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<li><a href="men.html">Манга</a></li>
 									<li><a href="men.html">Триллер</a></li>
 									<li><a href="/horrors/">Ужасы</a></li>
-									<li><a href="men.html">Фантастика</a></li>
+									<li><a href="/fantastic/">Фантастика</a></li>
 									<li><a href="men.html">Фэнтези</a></li>
 									<li><a href="men.html"></a></li>
 									<li><a href="men.html"></a></li>
@@ -166,24 +166,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					  </div>
 					</div>
 			</li>
-			<li><a class="color10" href="#">Авторы</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<ul>
-									<li><a href="men.html">Стивен Кинг</a></li>
-									<li><a href="men.html">Рэй Брэдбери</a></li>
-									<li><a href="men.html">Джордж Оруэлл</a></li>
-									<li><a href="men.html"></a></li>
-									<li><a href="men.html"></a></li>
-									<li><a href="men.html"></a></li>
-									<li><a href="men.html"></a></li>
-									<li><a href="men.html"></a></li>
-									<li><a href="men.html"></a></li>
-								</ul>	
-							</div>							
-						</div>
 			<li><a class="color7" href="#">Подарки</a>
 				<div class="megapanel">
 					<div class="row">

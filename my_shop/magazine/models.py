@@ -59,9 +59,12 @@ class Commet(models.Model):
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     message = models.TextField(max_length=500)
+    parent = models.ForeignKey(
+        'self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True
+    )
     book = models.ForeignKey(Book, related_name='commet', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} - {self.book}'
     
   

@@ -1,8 +1,11 @@
+from email import contentmanager
+from turtle import title
 from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic.base import View
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout, login
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 
 
@@ -27,8 +30,6 @@ class BookDetailView(DetailView):
     slug_url_kwarg = 'book_slug'        
     template_name = 'books/book_detail.html'
       
-
-
 class HomeView(ListView):
     
     model = Book
@@ -54,10 +55,32 @@ class LoginUser(LoginView):
 def logout_user(request):
     logout(request)
     return redirect('login')
+      
+class AddReview(View):
 
+    def post(self, request, pk):
+        form = ReviewForm(request.POST)
+        book = Book.objects.get(id=pk)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.book = book
+            form.save()
+        return redirect(book.get_absolute_url(), {'review':book})      
 
-class CartView(ListView):
-    
-    model = Book
-    context_object_name = 'cart'
-    template_name = 'wishlist.html'        
+class BooksView(View):
+
+    def get(self, request):
+        books = Book.objects.all()
+        return render(request, 'books/all_books.html', {'books':books})
+
+class Search(ListView):
+
+    paginate_by = 3
+
+    def get_queryset(self):
+        return Book.objects.filter(name__icontains=self.request.GET.get('q'))
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['q'] = self.request.GET.get('q')
+        return context
