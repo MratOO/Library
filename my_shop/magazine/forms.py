@@ -22,4 +22,4 @@ class ReviewForm(forms.ModelForm):
     
     class Meta:
         model = Commet
-        fields = ('name', 'email', 'message')
+        exclude = ('create_at', 'book')

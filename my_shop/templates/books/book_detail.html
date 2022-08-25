@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% load static %}
 {% block content %}
 <!DOCTYPE HTML>
+{% load static %}
 <html>
 <head>
 <title>Gifty an E-Commerce online Shopping Category Flat Bootstarp responsive Website Template| Single :: w3layouts</title>
@@ -85,11 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<input type="number" class="form-control">
 						</div>
 							<div class="form-group">
-								<button type="submit" id="submit_btn" class="btn btn-success btn-buy"
-									data-product_id = '{{ book.id }}'
-									data-name = '{{ book.name }}'
-									data-price = '{{ book.price }}'
-								>
+								<button type="submit" id="submit_btn" class="btn btn-success btn-buy">
 									Купить
 								</button>
 							</div>
@@ -102,42 +98,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       </div>
       <div class="clearfix"> </div>
 
-	  <div class="comments-area">
+	<div class="comments-area">
 		<h3>Добавить отзыв</h3>
-	  <form action="{% url 'add_review' book.id %}" method="post"> 
+	  <form action="{% url 'create_review' pk=book.id %}" method="post"> 
 		{% csrf_token %}
-			  <p>
-				  <label>Имя</label>
-				  <span>*</span>
-				  <input type="text" value="" name="name">
-			  </p>
-			  <p>
-				  <label>Email</label>
-				  <span>*</span>
-				  <input type="text" value="" name="email">
-			  </p>
-			  <p>
-				  <label>Отзыв</label>
-				  <span>*</span>
-				  <textarea name="message"></textarea>
-			  </p>
-			  <p>
-				  <input type="submit" value="Отправить">
-			  </p>
-	 	</form>
-		</div>	
-		{% for r in review %}
-		<div class="media mt-5 editContent">
-			<div class="media-body">
-				<h5 class="mt-0 editContent">
-					{{ r.name }}
-				</h5>
-				<p class="mt-2 editContent">
-					1
-				</p>
+			<div class="input-list">
+				{{ form }}
 			</div>
-		</div>	
-		{% endfor %}	
+			<button type="submit" class="site-btn">Отправить</button>
+	 	</form>
+<div class="single-post__comment">
+	<div class="widget__title" style="margin-top: 50px;">
+		<h4>Отзывы:</h4>
+	</div>	
+	<div class="single-post__comment_item">
+		<div class="single-post__comment__item__pic">
+			<img src="media/img/te2.jpg" alt="">
+		</div>
+		{% for comm in book.get_review %}
+		<div class="single-post__comment__item__text" style="margin-top: 50px;">
+			<h5>{{ comm.name }}</h5>
+			<h6>{{ comm.create_at }}</h6>
+			<p>{{ comm.message }}</p>
+		</div>
+	</div>
+</div>	
+		{% endfor %}
+	</div>		
 	</div>
 	</div>
 	</div>	

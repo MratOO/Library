@@ -1,3 +1,5 @@
+
+from django.utils import timezone
 from django.db import models
 from django.urls import reverse
 
@@ -36,7 +38,7 @@ class Book(models.Model):
     )
     genre = models.ForeignKey(
         Genres, 
-        related_name='book', 
+        related_name='book',
         on_delete=models.SET_NULL,
         null=True
     )
@@ -47,6 +49,9 @@ class Book(models.Model):
     def get_absolute_url(self):
         return reverse('book_detail', kwargs={'slug':self.genre.slug,
         'book_slug':self.slug})
+
+    def get_review(self):
+        return self.comment.all()    
 
     
     def __str__(self):
@@ -59,12 +64,11 @@ class Commet(models.Model):
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     message = models.TextField(max_length=500)
-    parent = models.ForeignKey(
-        'self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True
-    )
-    book = models.ForeignKey(Book, related_name='commet', on_delete=models.CASCADE)
+    create_at = models.DateTimeField(default=timezone.now)
+    book = models.ForeignKey(Book, related_name='comment', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.name} - {self.book}'
+
     
   

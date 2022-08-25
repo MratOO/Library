@@ -29,6 +29,11 @@ class BookDetailView(DetailView):
     context_object_name = 'book'
     slug_url_kwarg = 'book_slug'        
     template_name = 'books/book_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = ReviewForm
+        return context
       
 class HomeView(ListView):
     
@@ -56,8 +61,8 @@ def logout_user(request):
     logout(request)
     return redirect('login')
       
-class AddReview(View):
-
+class CreateReview(CreateView):
+    
     def post(self, request, pk):
         form = ReviewForm(request.POST)
         book = Book.objects.get(id=pk)
@@ -65,7 +70,8 @@ class AddReview(View):
             form = form.save(commit=False)
             form.book = book
             form.save()
-        return redirect(book.get_absolute_url(), {'review':book})      
+        return redirect(book.get_absolute_url(), {'review':book}) 
+
 
 class BooksView(View):
 

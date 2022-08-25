@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'my_shop.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'magazine',
+    'NAME': 'library',
     'USER': 'postgres',
     'PASSWORD': 'last22802',
     'HOST': '127.0.0.1',
@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
