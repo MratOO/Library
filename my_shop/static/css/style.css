@@ -246,7 +246,8 @@ body a{
 }
 .logo{
 	position: relative;
-	right: 250px;
+	right: 87px;
+	top: -24px;
 }
 ul.clock{
 	padding:0;
@@ -1250,7 +1251,6 @@ ul.dc_pagination li a {
 .col_1_of_single1 {
 	display: block;
 	float: left;
-	margin: 1% 0 1% 3.6%;
 }
 .col_1_of_single1:first-child {
 	margin-left: 0;

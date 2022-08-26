@@ -9,12 +9,13 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 
 
-from .models import Book, Genres
+from .models import Author, Book, Genres
 from .forms import *
 
 
 class ListView(ListView):
 
+    paginate_by = 6
     model = Book
     context_object_name = 'book_list'
     slug_url_kwarg = 'list_slug'
@@ -72,8 +73,8 @@ class CreateReview(CreateView):
             form.save()
         return redirect(book.get_absolute_url(), {'review':book}) 
 
-
 class BooksView(View):
+
 
     def get(self, request):
         books = Book.objects.all()
@@ -90,3 +91,12 @@ class Search(ListView):
         context = super().get_context_data(*args, **kwargs)
         context['q'] = self.request.GET.get('q')
         return context
+        
+class AuthorDetailView(DetailView):
+
+    model = Author
+    context_object_name = 'author' 
+    slug_url_kwarg = 'author_slug'    
+    template_name = 'author_detail.html'        
+
+

@@ -119,90 +119,19 @@
 	    	</div>
      	    <div class="clearfix"></div>
 	     </div>
-	          <div class="span_2">
-				{% for bk in book_list %}
-	          	 <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="{{ bk.get_absolute_url }}">
-				     <img src="{{ bk.poster.url }}" class="img-responsive" alt=""/>
-				     <h3>{{ bk.name }}</h3>
-				   	 <p>{{ bk.author }}</p>
-				   	 <h4>{{ bk.price }}</h4>
-			         </a>  
-				  </div> 
-				{% endfor %}  
-				  <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="single.html">
-				     <img src="images/pic1.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				  <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="single.html">
-				     <img src="images/pic3.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				  <div class="clearfix"></div>
-			  </div>
-			  <div class="span_2">
-	          	 <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="single.html">
-				     <img src="images/pic4.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				  <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="single.html">
-				    <img src="images/pic5.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				  <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="single.html">
-				     <img src="images/pic6.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				  <div class="clearfix"></div>
-			  </div>
-			  <div class="span_3">
-	          	 <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="single.html">
-				     <img src="images/pic7.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				  <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="single.html">
-				     <img src="images/pic8.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				  <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="single.html">
-				     <img src="images/pic9.jpg" class="img-responsive" alt=""/>
-				     <h3>parum clari</h3>
-				   	 <p>Duis autem vel eum iriure</p>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-				  </div> 
-				  <div class="clearfix"></div>
-			  </div>
-            </div>
+		{% for bk in book_list %}
+	    <div class="col-lg-4">
+	        	<a href="{{ bk.get_absolute_url }}">
+				<img src="{{ bk.poster.url }}" class="img-responsive" alt=""/>
+				<h3>{{ bk.name }}</h3>
+				<p>{{ bk.author }}</p>
+				<h4>{{ bk.price }}</h4>
+			    </a>  
+		</div> 
+		{% endfor %} 
       </div>
+	  <div class="grid-img-right mt-4 text-right bg bg1" >
+		{% include 'pagination.html' %}
+	</div>
 	</div>
 {% endblock content %}
