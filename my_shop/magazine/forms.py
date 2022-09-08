@@ -1,8 +1,9 @@
+from dataclasses import field
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
-from .models import Commet
+from .models import  Commet
 
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
@@ -23,3 +24,4 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Commet
         exclude = ('create_at', 'book')
+

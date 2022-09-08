@@ -122,11 +122,11 @@
 		{% for bk in book_list %}
 	    <div class="col-lg-4">
 	        	<a href="{{ bk.get_absolute_url }}">
-				<img src="{{ bk.poster.url }}" class="img-responsive" alt=""/>
+				<img src="{{ bk.poster.url }}" style="width: 561px; height: 400px;" class="img-responsive" alt=""/>
 				<h3>{{ bk.name }}</h3>
 				<p>{{ bk.author }}</p>
 				<h4>{{ bk.price }}</h4>
-			    </a>  
+			</a>  
 		</div> 
 		{% endfor %} 
       </div>

@@ -1,5 +1,6 @@
 from email import contentmanager
 from turtle import title
+from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.base import View
 from django.contrib.auth.views import LoginView
@@ -36,6 +37,7 @@ class BookDetailView(DetailView):
         context['form'] = ReviewForm
         return context
       
+      
 class HomeView(ListView):
     
     model = Book
@@ -71,14 +73,7 @@ class CreateReview(CreateView):
             form = form.save(commit=False)
             form.book = book
             form.save()
-        return redirect(book.get_absolute_url(), {'review':book}) 
-
-class BooksView(View):
-
-
-    def get(self, request):
-        books = Book.objects.all()
-        return render(request, 'books/all_books.html', {'books':books})
+        return redirect(book.get_absolute_url(), {'review':book})
 
 class Search(ListView):
 
@@ -97,6 +92,21 @@ class AuthorDetailView(DetailView):
     model = Author
     context_object_name = 'author' 
     slug_url_kwarg = 'author_slug'    
-    template_name = 'author_detail.html'        
+    template_name = 'author_detail.html' 
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['books'] = Book.objects.filter(author__slug=self.kwargs.get('author_slug'))
+        return context
+      
+class GenreListView(ListView):
 
+    model = Genres
+    context_object_name = 'genres_list'
+    slug_url_kwarg = 'genre_slug'
+    template_name = 'books/book_list.html'
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['genres'] = Genres.objects.all()
+        return context

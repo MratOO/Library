@@ -44,11 +44,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		</script>
 <div class="header_bottom_left">
-	<div class="logo">
-		<a href="index.html"><img src="media/img/Green Light.png" alt=""/></a>
-	</div>
 	<div class="clearfix"> </div>
-</div>		
+</div>						
 	<div class="men">
 	<div class="container">
 	  <div class="single_top">
@@ -103,7 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>	
 	<div class="single-post__comment_item">
 		<div class="single-post__comment__item__pic">
-			<img src="media/img/te2.jpg" alt="">
+			<img src="" alt="">
 		</div>
 		{% for comm in book.get_review %}
 		<div class="single-post__comment__item__text" style="margin-top: 50px;">
@@ -117,9 +114,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>		
 	</div>
 	</div>
+</div>
 	</div>	
-</div>  
-	</div>
+			
+{% endblock content %}
 <link href="{% static 'css/flexslider.css' %}" rel='stylesheet' type='text/css' />
 							  <script defer src="{% static 'js/jquery.flexslider.js' %}"></script>
 							  <script type="text/javascript">
@@ -135,4 +133,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								  });
 								});
 							  </script>	
-{% endblock content %}

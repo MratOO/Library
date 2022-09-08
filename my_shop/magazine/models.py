@@ -25,8 +25,7 @@ class Author(models.Model):
     slug = models.SlugField(max_length=75, default='')
 
     def __str__(self):
-        return self.name   
-    
+        return self.name 
 
 class Book(models.Model):
 
@@ -38,7 +37,7 @@ class Book(models.Model):
     read = models.URLField(max_length=1000, blank=True)
     author = models.ForeignKey(
         Author, 
-        related_name='book', 
+        related_name='book',
         on_delete=models.SET_NULL,
         null=True
     )
@@ -63,6 +62,7 @@ class Book(models.Model):
         return reverse('book_detail', kwargs={'slug':self.genre.slug,
         'book_slug':self.slug})    
        
+
 class Commet(models.Model):
 
     name = models.CharField(max_length=50)
@@ -74,5 +74,3 @@ class Commet(models.Model):
     def __str__(self):
         return f'{self.name} - {self.book}'
 
-    
-  

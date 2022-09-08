@@ -66,7 +66,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h5>{{ author.years }}</h5>
 					<form id="form_buying_product" class="form-inline">
 					</form>
-					 <p class="m_text2">{{ author.about }}</p>
+					<p style="margin-top: 60px;" class="m_text5">{{ author.about }}</p>
 				  </div>
 				  <div class="clearfix"></div>	
        </div>
@@ -74,10 +74,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       </div>
       <div class="clearfix"> </div>
 	</div>
-	<h1 style="margin-top: 50px; margin-left: 12px;">Книги Автора:</h1>		
+	<h1 style="margin-top: 50px; margin-left: 12px;">Книги Автора:</h1>	
+	{% for book in books %}	
 	    <div class="col-lg-4">
-	        <a href="/horrors/long_walk/">Долгая прогулка</a>  
+	        <a href="{{ book.get_absolute_url }}">{{ book.name }}</a>  
 		</div> 
+	{% endfor %}	
 	</div>
 	</div>
 	</div>	
