@@ -6,34 +6,33 @@
 	  <div class="col-md-3 sidebar">
 	  	<div class="block block-layered-nav">
 		    <div class="block-title">
-		        <strong><span>Shop By</span></strong>
+		        <strong><span></span></strong>
 		    </div>
     <div class="block-content">
                                                                     <dt class="even">Жанры</dt>
                     <dd class="even">
 <ol>
     <li>
-                <a href="#">Классика</a>
+                <a href="/biography/">Биография</a>
+                        (1)
+            </li>
+    <li>
+                <a href="/horrors/">Ужасы</a>
+                        (6)
+            </li>
+    <li>
+                <a href="/fantastic/">Фантастика</a>
+                        (3)
+            </li>
+    <li>
+                <a href="/fantasy/">Фэнтези</a>
                         (2)
             </li>
     <li>
-                <a href="#">Манга</a>
-                        (1)
-            </li>
-    <li>
-                <a href="#">Триллер</a>
-                        (1)
-            </li>
-    <li>
-                <a href="">Ужасы</a>
-                        (1)
-            </li>
-    <li>
-                <a href="#">Фантастика</a>
-                        (1)
+                <a href="#"></a>
             </li>
 	<li>
-		<a href="">Фэнтези</a>
+		<a href=""></a>
 	</li>				
 </ol>
 </dd>
@@ -41,24 +40,36 @@
                     <dd class="last odd">
 <ol>
     <li>
-                <a href="#">Стивен Кинг</a>
-                        (2)
+                <a href="/sapkovskiy">Анджей Сапковский</a>
+                        
             </li>
     <li>
-                <a href="#">Рэй Брэдбери</a>
-                        (1)
+                <a href="/lavcraft">Говард Лавкрафт Филлипс</a>
+                        
             </li>
     <li>
-                <a href="#">Джордж Оруэлл</a>
-                        (1)
+                <a href="/tolkin">Джон Толкин Рональд Руэл</a>
+                        
             </li>
     <li>
-                <a href="#">Red</a>
-                        (1)
+                <a href="/orwell">Джордж Оруэлл</a>
+                        
             </li>
     <li>
-                <a href="#">White</a>
-                        (1)
+                <a href="/kiz">Дэниел Киз</a>
+                        
+            </li>
+            <li>
+                <a href="/makonagi">Мэттью МакКонахи</a>
+                        
+            </li>
+            <li>
+                <a href="/bradberry">Рэй Брэдбери</a>
+                        
+            </li>
+            <li>
+                <a href="/king">Стивен Кинг</a>
+                        
             </li>
 </ol>
 </dd>
@@ -68,64 +79,29 @@
 </div>
 <div class="block block-cart">
         <div class="block-title">
-        <strong><span>Carrello</span></strong>
+        <strong><span></span></strong>
     </div>
     <div class="block-content">
-                        <p class="empty">You have no items in your shopping cart.</p>
+                        <p class="empty"></p>
         </div>
 </div>
 <div class="block block-list block-compare">
     <div class="block-title">
-        <strong><span>Compare Products                    </span></strong>
+        <strong><span></span></strong>
     </div>
     <div class="block-content">
-            <p class="empty">You have no items to compare.</p>
+            <p class="empty"></p>
         </div>
 </div>
 </div>
 <div class="col-md-9">
-	<div class="mens-toolbar">
-          <div class="sort">
-               	<div class="sort-by">
-		            <label>Sort By</label>
-		            <select>
-		                            <option value="">
-		                    Popularity               </option>
-		                            <option value="">
-		                    Price : High to Low               </option>
-		                            <option value="">
-		                    Price : Low to High               </option>
-		            </select>
-		        </div>
-    		</div>
-	        <div class="pager">   
-	           <div class="limiter visible-desktop">
-	            <label>Show</label>
-	            <select>
-	                            <option value="" selected="selected">
-	                    9                </option>
-	                            <option value="">
-	                    15                </option>
-	                            <option value="">
-	                    30                </option>
-	                        </select> per page        
-	             </div>
-	       		<ul class="dc_pagination dc_paginationA dc_paginationA06">
-				    <li><a href="#" class="previous">Pages</a></li>
-				    <li><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-			  	</ul>
-		   		<div class="clearfix"></div>
-	    	</div>
-     	    <div class="clearfix"></div>
-	     </div>
+
 		{% for bk in book_list %}
 	    <div class="col-lg-4">
 	        	<a href="{{ bk.get_absolute_url }}">
 				<img src="{{ bk.poster.url }}" style="width: 561px; height: 400px;" class="img-responsive" alt=""/>
 				<h3>{{ bk.name }}</h3>
-				<p>{{ bk.author }}</p>
-				<h4>{{ bk.price }}</h4>
+				<p style="margin-bottom: 31px">{{ bk.author }}</p>
 			</a>  
 		</div> 
 		{% endfor %} 

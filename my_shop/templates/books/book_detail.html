@@ -51,11 +51,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  <div class="single_top">
 	       <div class="col-md-9 single_right">
 	   	       <div class="grid images_3_of_2">
-						<ul id="etalage">
+						<ul id="etalage" style="width: 500px; display: block; height: 533px;" class="etalage">
 							<li>
 								<a href="optionallink.html">
-									<img class="etalage_thumb_image" src="{{ book.poster.url }}" width="250" height="350" class="img-responsive" />
-									<img class="etalage_source_image" src="{{ book.poster.url }}" width="250" height="350" class="img-responsive" title="" />
+									<img class="etalage_thumb_image" src="{{ book.poster.url }}" class="img-responsive" />
+									<img class="etalage_source_image" src="{{ book.poster.url }}" class="img-responsive" title="" />
 								</a>
 							</li>
 							<li>
@@ -74,19 +74,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						 <div class="clearfix"></div>		
 				  </div> 
 				  <div class="desc1 span_3_of_2">
-				    <h1>{{ book.name }}</h1>
+				    <h2>{{ book.name }}</h2>
 					<p>{{ book.author }}</p>
 					<a class="btn btn-success" style="margin-top: 30px;" href="{{ book.read }}"button">Читать</a>
-					<p style="margin-top: 60px;" class="m_text5">{{ book.description }}</p>
+					<h4 style="margin-top: 30px;">Аннотация к книге:</h4>
+					<p style="margin-top: 50px;" class="m_text5">{{ book.description }}</p>
 				  </div>
 				  <div class="clearfix"></div>	
        </div>
-       <div class="col-md-3">
-      </div>
       <div class="clearfix"> </div>
 
 	<div class="comments-area">
-		<h3>Добавить отзыв</h3>
+		<h5 style="margin-bottom: 80px; font-size: 17px;">Хотите приобрести физический экземпляр книги?
+			Вы можете это сделать в интернет-магазине <a class="btn btn-success" href="https://www.labirint.ru">Лабиринт</a>
+		</h5>
+
+		<h2>Читали эту книгу?</h4>
+		<h4 style="margin-bottom: 55px;">Вы можете поделиться своими впечатлениями ниже!)</h3>
+		
 	  <form action="{% url 'create_review' pk=book.id %}" method="post"> 
 		{% csrf_token %}
 			<div class="input-list">
