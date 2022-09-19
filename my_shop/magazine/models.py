@@ -7,16 +7,16 @@ from django.urls import reverse
 
 
 class Genres(models.Model):
-
+    """Жанры"""
+    
     name = models.CharField(max_length=75)
     slug = models.SlugField(max_length=75, default='')
-
-
 
     def __str__(self):
         return self.name
 
 class Author(models.Model):
+    """Авторы"""
 
     name = models.CharField(max_length=100,blank=True)
     portrait = models.ImageField(upload_to='media', blank=True)
@@ -28,6 +28,7 @@ class Author(models.Model):
         return self.name 
 
 class Book(models.Model):
+    '''Книги'''
 
     poster = models.ImageField(upload_to='media', blank=True)
     book_view = models.ImageField(upload_to='media', blank=True)
@@ -50,11 +51,9 @@ class Book(models.Model):
     description = models.TextField()
     slug = models.SlugField(max_length=75, default='')
 
-
     def get_review(self):
         return self.comment.all()    
 
-    
     def __str__(self):
         return self.name
 
@@ -62,8 +61,8 @@ class Book(models.Model):
         return reverse('book_detail', kwargs={'slug':self.genre.slug,
         'book_slug':self.slug})    
        
-
 class Commet(models.Model):
+    '''Отзывы'''
 
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)

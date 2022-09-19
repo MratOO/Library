@@ -1,5 +1,4 @@
 from email import contentmanager
-from turtle import title
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.base import View
@@ -15,6 +14,7 @@ from .forms import *
 
 
 class ListView(ListView):
+    """Список книг"""
 
     paginate_by = 6
     model = Book
@@ -26,7 +26,7 @@ class ListView(ListView):
         return Book.objects.filter(genre__slug=self.kwargs.get('list_slug'))
 
 class BookDetailView(DetailView):
-
+    """Информация о книге"""
     model = Book
     context_object_name = 'book'
     slug_url_kwarg = 'book_slug'        
@@ -36,16 +36,15 @@ class BookDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['form'] = ReviewForm
         return context
-      
-      
+           
 class HomeView(ListView):
-    
+    """Домашняя страница"""
     model = Book
     context_object_name = 'home'
     template_name = 'books/home.html' 
 
 class RegisterUser(CreateView):
-    
+    """Регистрация пользователя"""
     form_class = RegisterUserForm
     template_name = 'users/register.html'
     success_url = reverse_lazy('login')
@@ -56,16 +55,18 @@ class RegisterUser(CreateView):
         return redirect('home') 
 
 class LoginUser(LoginView):
+    """Логин пользователя"""
 
     form_class = AuthenticationForm
     template_name = 'users/login.html'
 
 def logout_user(request):
+    """Выход пользователя"""
     logout(request)
     return redirect('login')
       
 class CreateReview(CreateView):
-    
+    """Отзывы"""
     def post(self, request, pk):
         form = ReviewForm(request.POST)
         book = Book.objects.get(id=pk)
@@ -76,6 +77,7 @@ class CreateReview(CreateView):
         return redirect(book.get_absolute_url(), {'review':book})
 
 class Search(ListView):
+    """Поиск"""
 
     paginate_by = 3
 
@@ -88,11 +90,12 @@ class Search(ListView):
         return context
         
 class AuthorDetailView(DetailView):
+    """Информация об авторе"""
 
     model = Author
     context_object_name = 'author' 
     slug_url_kwarg = 'author_slug'    
-    template_name = 'author_detail.html' 
+    template_name = 'books/author_detail.html' 
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)

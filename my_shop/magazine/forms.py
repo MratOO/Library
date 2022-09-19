@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from .models import  Commet
 
 class RegisterUserForm(UserCreationForm):
+    """Форма регистрации пользователя"""
+
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-input'}))
     password1 = forms.CharField(label='Пароль',widget=forms.PasswordInput(attrs={'class': 'form-input'}))
@@ -16,11 +18,14 @@ class RegisterUserForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
 
 class LoginUserForm(AuthenticationForm):
+    """Форма входа пользователя"""
+    
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))  
     password = forms.CharField(label='Пароль',widget=forms.PasswordInput(attrs={'class': 'form-input'}))      
 
 class ReviewForm(forms.ModelForm):
-    
+    """Форма отзыва"""
+
     class Meta:
         model = Commet
         exclude = ('create_at', 'book')
