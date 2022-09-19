@@ -16,7 +16,7 @@ from .forms import *
 class ListView(ListView):
     """Список книг"""
 
-    paginate_by = 6
+    paginate_by = 3
     model = Book
     context_object_name = 'book_list'
     slug_url_kwarg = 'list_slug'
