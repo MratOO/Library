@@ -14,11 +14,6 @@ import os
 from pathlib import Path
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rio3aljmvt7*x%uds!m8@$n83p=d!77tsxdm6asxl)dckz!av!'
-
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
